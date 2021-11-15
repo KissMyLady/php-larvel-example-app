@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Api\v3\User\UserApi;
+use App\Http\Controllers\Api\v3\User\UserModelCtrl;
 use App\Http\Controllers\UserQuery;
 use Illuminate\Support\Facades\Route;
 
@@ -38,3 +40,28 @@ Route::get('/home/user/userDelFake',  [UserCtrl::class, "userDelFake"]);   //假
 
 ## 分页查询
 Route::get('/home/user/pageGetUSer',  [UserQuery::class, "pageGetUSer"]);   //假删
+
+
+## 查询类
+Route::prefix("v3")->namespace("v3")
+    -> group(function (){
+        Route::get("test1",        [UserApi::class, "test1"]);
+        Route::get("queryWhere",   [UserApi::class, "queryWhere"]);    //查循id大于2并且年龄小于21的数据
+        Route::get("queryFirst",   [UserApi::class, "queryFirst"]);    //取出单个数据
+        Route::get("querySomeOne", [UserApi::class, "querySomeOne"]);  //取出字段具体的值
+        Route::get("querySomeOneRow", [UserApi::class, "querySomeOneRow"]);  //获取某些字段数据(多个)
+        Route::get("orderBy",      [UserApi::class, "orderBy"]);     //排序
+        Route::get("pagination",   [UserApi::class, "pagination"]);  //分页
+        Route::get("queryBySQL_1", [UserApi::class, "queryBySQL_1"]);  //sql查询
+        Route::get("queryBySQL_2", [UserApi::class, "queryBySQL_2"]);  //sql查询
+
+        ## 模型类 directUse
+        Route::get("directUse", [UserModelCtrl::class, "directUse"]); //静态查询
+        Route::get("newModel", [UserModelCtrl::class, "newModel"]);   //new对象查询
+        Route::get("modelAddUser", [UserModelCtrl::class, "modelAddUser"]);
+
+
+
+
+    });
+

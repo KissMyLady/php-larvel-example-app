@@ -59,8 +59,16 @@ Route::prefix("v3")->namespace("v3")
         Route::get("directUse", [UserModelCtrl::class, "directUse"]); //静态查询
         Route::get("newModel", [UserModelCtrl::class, "newModel"]);   //new对象查询
         Route::get("modelAddUser", [UserModelCtrl::class, "modelAddUser"]);
+        Route::get("modelAddUser_2", [UserModelCtrl::class, "modelAddUser_2"]);
+        Route::get("model_query_1", [UserModelCtrl::class, "model_query_1"]);
+        Route::get("model_query_2", [UserModelCtrl::class, "model_query_2"]);
+        Route::get("model_query_3", [UserModelCtrl::class, "model_query_3"]);
 
+        //修改数据
+        Route::get("model_chang_1", [UserModelCtrl::class, "model_chang_1"]);
+        Route::get("model_delete_1", [UserModelCtrl::class, "model_delete_1"]);
 
+        //关联查询
 
 
     });

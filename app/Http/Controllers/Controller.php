@@ -35,7 +35,6 @@ class Controller extends BaseController
         //    Input::get(['id', 'name']);
         //获取除了xx之外的值: Input::get(['name']);
         //是否存在          Input::has('gender');
-
     }
 
 }

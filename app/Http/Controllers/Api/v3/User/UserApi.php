@@ -6,12 +6,12 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\DB;
 
 
-class UserApi extends BaseController{
+class UserApi extends ApiController{
 
     //测试
     public function test1(){
-        echo "Hello Php";
-        //return $this->success("ok", 200, "成功返回消息了");
+        //echo "Hello Php";
+        return $this->success("ok", 200, "成功返回消息了");
     }
 
     //查循id大于2并且年龄小于21的数据
@@ -20,7 +20,8 @@ class UserApi extends BaseController{
         $result = $db -> where("id", ">", 2)
             -> where("age", "<", 19)  //并
             -> get();
-        dd($result);
+        //dd($result);
+        return $this->success("ok", 200, $result);
     }
 
     //取出单个数据

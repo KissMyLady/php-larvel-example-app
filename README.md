@@ -1,10 +1,46 @@
 # php框架
 
 # 启动方法
-
+1, 复制env模板, 修改变量
+2, 启动命令:
+```
+composer install --ignore-platform-reqs
+php artisan key:generate
 php artisan serve
+```
 
-## Nginx Config
+## Window Nginx Config 
+启动 php-cgi: 
+- `php-cgi.exe -b 127.0.0.1:9000`  
+
+参考博客: https://www.cnblogs.com/liangxiaofeng/p/5975135.html
+windows下Nginx安装目录: D:\programm_soft_ware\nginx-1.14.0
+Nginx 配置如下:    
+```
+root H:/myPprogramming/phpCode/php-larvel-example-app/public;
+error_page   500 502 503 504  /50x.html;
+index  index.html index.htm index.php;
+location = /50x.html {
+    root   html;
+}
+
+location / {
+    try_files $uri $uri/ /index.php?$query_string;
+}
+
+location ~ \.php$
+{
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME H:/myPprogramming/phpCode/php-larvel-example-app/public$fastcgi_script_name;
+    include fastcgi_params;
+}
+location ~ /\.ht {
+    deny all;
+}
+```
+
+## Linux Nginx Config
 Reference web : https://laravel.com/docs/8.x/deployment
 
 ```

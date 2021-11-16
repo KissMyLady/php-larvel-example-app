@@ -10,8 +10,8 @@ class ApiController extends Controller{
     use ApiResponseTraits;
 
     //TODO: 这里有bug
-    public function __construct()
-    {
-        parent::__construct();
-    }
+//    public function __construct()
+//    {
+//        parent::__construct();
+//    }
 }

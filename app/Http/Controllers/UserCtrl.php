@@ -33,28 +33,28 @@ class UserCtrl extends BaseController
         $db = DB::table('tb_user');
 
         //插入多条
-//        $result = $db -> insert([
-//            [
-//               "name" => "阿紫",
-//               "age" => "56",
-//               "email" => "244121"
-//           ], [
-//                "name" => "马冬梅",
-//                "age" => "18",
-//                "email" => "24411"
-//            ],[
-//                "name" => "马春梅",
-//                "age" => "19",
-//                "email" => "124411"
-//            ]
-//        ]);
+        $result = $db -> insert([
+            [
+               "name" => "阿紫",
+               "age" => "56",
+               "email" => "244121"
+           ], [
+                "name" => "马冬梅",
+                "age" => "18",
+                "email" => "24411"
+            ],[
+                "name" => "马春梅",
+                "age" => "19",
+                "email" => "124411"
+            ]
+        ]);
 
         //插入一条记录, 返回一个id值
-        $result = $db -> insertGetId([
-            "name" => "马秋梅",
-            "age" => "18",
-            "email" => "24411"
-        ]);
+//        $result = $db -> insertGetId([
+//            "name" => "马秋梅",
+//            "age" => "18",
+//            "email" => "24411"
+//        ]);
         dd($result);
 
         //echo "Hello World 1";

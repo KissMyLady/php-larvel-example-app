@@ -1,6 +1,6 @@
-# php框架
+# Laravel php框架
 
-# 启动方法
+# 启 动
 1, 复制env模板, 修改变量
 2, 启动命令:
 ```
@@ -17,6 +17,21 @@ php artisan migrate
 数据填充: 
 php artisan db:seed
 ```
+
+## 笔记
+#### 创建模型类
+1, 可使用 artisan 命令
+```
+php artisan make:model User/UserTb
+```
+
+2, 创建映射
+参考博客:　https://blog.csdn.net/qq_38253837/article/details/81303530
+```
+php artisan make:migration create_table_users
+```
+
+
 
 ## Window Nginx Config 
 启动 php-cgi: 

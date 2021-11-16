@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\User\UserRef;
 
 
-
+# php artisan db:seed
 //数据填充
 class TableUser_DataFill extends Seeder {
 
@@ -14,7 +14,7 @@ class TableUser_DataFill extends Seeder {
         //数据填充
         DB::table("table_users") -> delete();
         for($i=0; $i<10; $i++){
-            UserRef::created([
+            UserRef::create([
                 "title" => 'Title' .$i,
                 "slug" => "slug" .$i,
                 "body" => "slug" .$i ,

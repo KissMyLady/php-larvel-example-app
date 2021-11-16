@@ -9,6 +9,15 @@ php artisan key:generate
 php artisan serve
 ```
 
+3, 数据迁移
+```
+迁移: 
+php artisan migrate
+
+数据填充: 
+php artisan db:seed
+```
+
 ## Window Nginx Config 
 启动 php-cgi: 
 - `php-cgi.exe -b 127.0.0.1:9000`  

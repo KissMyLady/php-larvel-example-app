@@ -1,8 +1,10 @@
 <?php
 
 namespace Database\Seeders;
-
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use App\Models\User\UserRef;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,8 +13,8 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        // \App\Models\User::factory(10)->create();
+    public function run(){
+        $this->call(TableUser_DataFill::class);
+
     }
 }

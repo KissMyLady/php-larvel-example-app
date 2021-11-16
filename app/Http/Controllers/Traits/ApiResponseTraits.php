@@ -37,9 +37,18 @@ trait ApiResponseTraits
         return $this->failed($message, FoundationResponse::HTTP_INTERNAL_SERVER_ERROR);
     }
 
+    public function ok($data, $message = 'ok', $status = "success"): \Illuminate\Http\JsonResponse
+    {
+        return $this->status($status, compact('data'), null, $message);
+    }
+
     public function success($data, $status = "success", $message = '')
     {
         return $this->status($status, compact('data'), null, $message);
+    }
+
+    public function error($message, $code = 400, $status = 'error', $data = ''): \Illuminate\Http\JsonResponse{
+        return $this->status($status, compact('data'), $code, $message);
     }
 
     public function failed($message, $code = 400, $status = 'error', $data = '')

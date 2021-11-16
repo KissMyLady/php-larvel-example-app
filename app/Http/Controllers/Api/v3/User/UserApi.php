@@ -11,7 +11,7 @@ class UserApi extends ApiController{
     //测试
     public function test1(){
         //echo "Hello Php";
-        return $this->success("ok", 200, "成功返回消息了");
+        return $this->ok("成功");
     }
 
     //查循id大于2并且年龄小于21的数据
@@ -21,7 +21,7 @@ class UserApi extends ApiController{
             -> where("age", "<", 19)  //并
             -> get();
         //dd($result);
-        return $this->success("ok", 200, $result);
+        return $this -> ok($result);
     }
 
     //取出单个数据
@@ -30,7 +30,8 @@ class UserApi extends ApiController{
         $result = $db
             -> where("id", ">", 2)
             -> first();
-        dd($result);
+        return $this -> ok($result);
+        //dd($result);
     }
 
     //取出某个具体的值
@@ -40,7 +41,8 @@ class UserApi extends ApiController{
         $result = $db
             -> where("id", "=", 11)
             -> value("name");
-        dd($result);
+        return $this -> ok($result);
+        //dd($result);
     }
 
     //获取某些字段数据(返回多个)
@@ -49,7 +51,8 @@ class UserApi extends ApiController{
         $result = $db
             -> select("id", "name as user_name", "email")
             -> get();
-        dd($result);
+        return $this -> ok($result);
+        //dd($result);
     }
 
     //排序
@@ -59,7 +62,8 @@ class UserApi extends ApiController{
             -> select("id", "name as user_name", "age", "email")
             -> orderBy("age", "desc")
             -> get();
-        dd($result);
+        return $this -> ok($result);
+        //dd($result);
     }
 
     //分页
@@ -75,13 +79,22 @@ class UserApi extends ApiController{
     //直接执行SQL语句
     //执行任意的 insert update delete语句[影响记录语句]
     public function queryBySQL_1(){
-        $db = DB::statement("insert into tb_user value (17, '光之君', 28, '21321321')");
-        dd();
+        try {
+            $db = DB::statement("insert into tb_user value (22, '光之君', 28, '21321321')");
+            return $this -> ok("插入成功");
+        }catch (\Exception $e){
+            return $this -> error("插入失败");
+        }
+        //dd();
     }
 
     //执行任意的 select 语句[不影响记录]
     public function queryBySQL_2(){
-        $res = DB::select("select * from tb_user");
-        dd($res);
+        try {
+            $res = DB::select("select * from tb_user");
+            return $this -> ok($res, "查询成功");
+        }catch (\Exception $e){
+            return $this -> error("失败");
+        }
     }
 }
